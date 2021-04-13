@@ -13,6 +13,7 @@ let Sub_BroadDec = document.getElementById('Sub_BroadDec');
 let Sub_BroadBin = document.getElementById('Sub_BroadBin');
 let hosts_subredes = document.getElementById('hosts_subredes');
 let area_calc = document.querySelectorAll('.area-calc');
+document.querySelector('.bgd-video').playbackRate = .70;
 
 function bin(dec) {
     return (dec >>> 0).toString(2);
