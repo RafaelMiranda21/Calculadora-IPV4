@@ -112,8 +112,8 @@
 #input_masc {
     display: flex;
     align-items: center;
-    width: 6rem;
-    height: 2.5rem;
+    width: 4rem;
+    height: 2rem;
 }
 
 .input input,
@@ -233,7 +233,7 @@ select {
         margin: .5rem .2rem;
     }
     .conteudo-calc {
-        height: 70%;
+        height: 50%;
     }
     .campo_decimal {
         width: 6rem;
