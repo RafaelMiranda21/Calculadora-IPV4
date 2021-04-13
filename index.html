@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/style/global.css">
+    <link rel="stylesheet" href="./src/style/style.css">
+    <script src="./src/script/script.js" defer></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="./imagens/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./imagens/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./imagens/favicon/favicon-16x16.png">
+    <link rel="manifest" href="./imagens/favicon/site.webmanifest">
+    <title>Calculadora de Rede</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="titulo">
+            <h1>Calculadora de Rede</h1>
+        </div>
+        <div class="ipv4">
+            <div class="desc">
+                <h2>Endereço IPV4:</h2>
+            </div>
+            <div class="campos">
+                <input type="text" class="input" maxlength="3" placeholder="192">
+                <div class="dot"></div>
+                <input type="text" class="input" maxlength="3" placeholder="168">
+                <div class="dot"></div>
+                <input type="text" class="input" maxlength="3" placeholder="26">
+                <div class="dot"></div>
+                <input type="text" class="input" maxlength="3" placeholder="254">
+                <div class="barra"></div>
+                <select name="masc" id="input_masc" onchange="mascara()">
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                    <option value="13">13</option>
+                                    <option value="14">14</option>
+                                    <option value="15">15</option>
+                                    <option value="16">16</option>
+                                    <option value="17">17</option>
+                                    <option value="18">18</option>
+                                    <option value="19">19</option>
+                                    <option value="20">20</option>
+                                    <option value="21">21</option>
+                                    <option value="22">22</option>
+                                    <option value="23">23</option>
+                                    <option value="24">24</option>
+                                    <option value="25">25</option>
+                                    <option value="26">26</option>
+                                    <option value="27">27</option>
+                                    <option value="28">28</option>
+                                    <option value="29">29</option>
+                                    <option value="30">30</option>
+                                    <option value="31">31</option>
+                                    <option value="32">32</option>
+                                </select>
+            </div>
+        </div>
+        <div class="calcular">
+            <input type="button" value="Calcular" onclick="rede()">
+        </div>
+        <div class="conteudo-calc">
+            <div class="calculo">
+                <div class="texto">
+                    <span>IPV4</span>
+                </div>
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="ipv4Dec"></div>
+                    <div class="area-calc campo_binario" id="ipv4B"></div>
+                </div>
+
+            </div>
+            <div class="calculo">
+                <div class="texto">
+                    <span>Máscara de sub-rede</span>
+                </div>
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="mascara_subRedeDec"></div>
+                    <div class="area-calc campo_binario" id="mascara_subRedeBin"></div>
+                </div>
+            </div>
+            <div class="calculo">
+                <div class="texto">
+                    <span>Rede</span>
+                </div>
+
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="Sub_RedeDec"></div>
+                    <div class="area-calc campo_binario" id="Sub_RedeBin"></div>
+                </div>
+            </div>
+            <div class="calculo">
+                <div class="texto">
+                    <span>Broadcast</span>
+                </div>
+
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="Sub_BroadDec"></div>
+                    <div class="area-calc campo_binario" id="Sub_BroadBin"></div>
+                </div>
+            </div>
+
+            <div class="calculo">
+                <div class="texto">
+                    <span>1° Host</span>
+                </div>
+
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="IntervaloI"></div>
+                    <div class="area-calc campo_binario" id="IntervaloIBIN"></div>
+                </div>
+            </div>
+            <div class="calculo">
+                <div class="texto">
+                    <span>Ultimo Host</span>
+                </div>
+
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="IntervaloF"></div>
+                    <div class="area-calc campo_binario" id="IntervaloFBIN"></div>
+                </div>
+            </div>
+
+            <div class="calculo">
+                <div class="texto">
+                    <span>Número de hosts/sub-redes</span>
+                </div>
+
+                <div class="calc">
+                    <div class="area-calc campo_decimal" id="hosts_subredes"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="background">
+            <video class="bgd-video" autoplay loop muted>
+                <source src="https://r1---sn-bg0eznll.c.drive.google.com/videoplayback?expire=1618291855&ei=T_R0YNyJGuSX8gS344qICg&ip=138.255.214.181&cp=QVRGWkNfUFhTRlhPOjZPUjFOYkkwbXZjWFZHY2NTYWVQeldOVmh4dFBxc3lMZDA4dzhYM1hnVWg&id=1ab918a62d6bbd68&itag=18&source=webdrive&requiressl=yes&mh=ZV&mm=32&mn=sn-bg0eznll&ms=su&mv=m&mvi=1&pl=24&ttl=transient&susc=dr&driveid=19INKb4pYURb51TlKFHWRmhT313frtYzU&app=explorer&mime=video/mp4&vprv=1&prv=1&dur=19.876&lmt=1618277454223745&mt=1618277299&sparams=expire,ei,ip,cp,id,itag,source,requiressl,ttl,susc,driveid,app,mime,vprv,prv,dur,lmt&sig=AOq0QJ8wRQIgRLwfk0CI7u6F_tIBAYrAbiRUilfC2uqNBzmlVALAWC4CIQDN1gz0i4bKcPG917_QC_jnXjbGcFEcttMXkRizckD2tg==&lsparams=mh,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIhANWQFQSbJXeawIOkdR0XaCEw0vLCFjeskJpfxUon5yp4AiANRGB0Itqnyu-Mh1jT0QDKy0ZaGarLjXnqHVYzfuH6-g==&cpn=8-jUyVctTNW5ChJk&c=WEB_EMBEDDED_PLAYER&cver=1.20210411.0.0" type="video/mp4">
+            </video>
+        </div>
+    </div>
+</body>
+
+</html>

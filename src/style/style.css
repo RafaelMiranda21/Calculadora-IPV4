@@ -1,0 +1,389 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    background: rgba(0, 0, 0, .7);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.background {
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    animation: zoom linear 4s forwards;
+}
+
+.bgd-video {
+    position: fixed;
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .bgd-video {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .bgd-video {
+        width: auto;
+        height: 100%;
+    }
+}
+
+@keyframes zoom {
+    0% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.titulo {
+    position: absolute;
+    width: 100%;
+    top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo h1 {
+    font-size: 3.2rem;
+}
+
+.conteudo-calc {
+    width: 100%;
+    height: 80%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.ipv4 {
+    width: 40%;
+    height: 2rem;
+    position: absolute;
+    top: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.desc {
+    white-space: nowrap;
+}
+
+.calcular {
+    position: absolute;
+    top: 11rem;
+    left: 50%;
+    cursor: pointer;
+    z-index: 1;
+    transition: all ease 800ms;
+}
+
+.calcular input {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.calcular:hover {
+    transform: translateY(-5px);
+}
+
+.campos {
+    margin-left: 2rem;
+    display: flex;
+}
+
+.input,
+#input_masc {
+    display: flex;
+    align-items: center;
+    width: 6rem;
+    height: 2.5rem;
+}
+
+.input input,
+select {
+    height: 2.5rem;
+    width: 5rem;
+}
+
+.campos select {
+    font-size: 1.1rem;
+}
+
+.input input:focus {
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, .6);
+}
+
+.dot {
+    width: .4rem;
+    height: .4rem;
+    border-radius: 50%;
+    margin-top: 7%;
+    background-color: #fff;
+}
+
+.barra {
+    height: 2rem;
+    width: .2rem;
+    margin: .3rem .4rem 0 .4rem;
+    transform: rotate(14deg);
+    background-color: #fff;
+}
+
+.calculo {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 80%;
+    margin: .7rem 0;
+}
+
+.conteudo-calc {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.calc {
+    display: flex;
+    width: 50rem;
+    justify-content: flex-start;
+}
+
+.area-calc {
+    width: 25rem;
+    height: 2rem;
+    background: #ccc;
+    margin: .5rem 1rem;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.texto {
+    display: flex;
+    width: 30rem;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+}
+
+@media screen and (min-width:320px) and (max-width:480px) {
+    .container {
+        min-height: 120vh;
+        height: 100%;
+    }
+    .titulo h1 {
+        font-size: 1.6rem;
+    }
+    .desc h2 {
+        font-size: .8rem;
+        margin-bottom: 3px;
+    }
+    .ipv4 {
+        width: 100%;
+        top: 5rem;
+        flex-direction: column;
+    }
+    .campos {
+        margin-left: .2rem;
+    }
+    .input,
+    #input_masc {
+        width: 2.5rem;
+        height: 1rem;
+        font-size: .7rem
+    }
+    .dot {
+        width: .2rem;
+        height: 0.2rem;
+        margin-top: 5%;
+    }
+    .barra {
+        height: .7rem;
+        margin: .3rem .2rem 0 .2rem;
+    }
+    .campos select {
+        font-size: .8rem;
+    }
+    .calcular {
+        top: 8rem;
+        left: 40%;
+    }
+    .calcular input {
+        padding: 0.2rem .4rem;
+        font-size: .6em;
+    }
+    .area-calc {
+        margin: .5rem .2rem;
+    }
+    .conteudo-calc {
+        height: 70%;
+    }
+    .campo_decimal {
+        width: 6rem;
+    }
+    .campo_binario {
+        width: 15rem;
+    }
+    .texto {
+        width: 100%;
+        justify-content: center;
+        font-size: .8rem;
+    }
+    .calc {
+        width: 100%;
+    }
+    .calculo {
+        margin: 0;
+        justify-content: center;
+        width: 100%;
+        flex-direction: column;
+    }
+    .binario {
+        font-size: 11px;
+    }
+    .decimal {
+        font-size: 11px;
+    }
+}
+
+@media screen and (min-width:481px) and (max-width:768px) {
+    .titulo h1 {
+        font-size: 1.8rem;
+    }
+    .desc h2 {
+        font-size: 1rem;
+    }
+    .ipv4 {
+        width: 100%;
+        top: 5rem;
+    }
+    .campos {
+        margin-left: .5rem;
+    }
+    .input,
+    #input_masc {
+        width: 2.8rem;
+        height: 1.3rem;
+        font-size: .7rem
+    }
+    .dot {
+        width: .2rem;
+        height: 0.2rem;
+        margin-top: 5%;
+    }
+    .barra {
+        height: 1rem;
+    }
+    .campos select {
+        font-size: .8rem;
+    }
+    .calcular {
+        top: 8rem;
+        left: 45%;
+    }
+    .calcular input {
+        padding: 0.2rem .4rem;
+        font-size: .8rem;
+    }
+    .conteudo-calc {
+        height: 60%;
+    }
+    .campo_decimal {
+        width: 7rem;
+    }
+    .campo_binario {
+        width: 15rem;
+    }
+    .texto {
+        width: 12%;
+        justify-content: flex-start;
+        font-size: .8rem;
+    }
+    .calc {
+        width: 80%;
+    }
+    .calculo {
+        margin: 0;
+        justify-content: center;
+        width: 100%;
+    }
+    .binario {
+        font-size: 11px;
+    }
+    .decimal {
+        font-size: 11px;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width:1024px) {
+    .titulo h1 {
+        font-size: 1.8rem;
+    }
+    .desc h2 {
+        font-size: 1.2rem;
+    }
+    .ipv4 {
+        width: 100%;
+        top: 5rem;
+    }
+    .input,
+    #input_masc {
+        width: 3.8rem;
+        height: 1.8rem;
+    }
+    .campos select {
+        font-size: .8rem;
+    }
+    .calcular {
+        top: 8rem;
+    }
+    .calcular input {
+        padding: 0.2rem .4rem;
+        font-size: .8rem;
+    }
+    .conteudo-calc {
+        height: 60%;
+    }
+    .campo_decimal {
+        width: 9rem;
+    }
+    .campo_binario {
+        width: 17rem;
+    }
+    .texto {
+        width: 20%;
+        justify-content: flex-start;
+        font-size: 1rem;
+    }
+    .calc {
+        width: 60%;
+    }
+    .calculo {
+        margin: 0;
+        justify-content: center;
+        width: 100%;
+    }
+    .binario {
+        font-size: 12px;
+    }
+    .decimal {
+        font-size: 13px;
+    }
+}
