@@ -18,7 +18,6 @@
     left: 0;
     top: 0;
     z-index: -1;
-    animation: zoom linear 3s;
 }
 
 .bgd-video {
@@ -36,15 +35,6 @@
     .bgd-video {
         width: auto;
         height: 100%;
-    }
-}
-
-@keyframes zoom {
-    0% {
-        transform: scale(1.7);
-    }
-    100% {
-        transform: scale(1);
     }
 }
 
