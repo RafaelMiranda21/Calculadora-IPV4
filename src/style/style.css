@@ -182,6 +182,7 @@ select {
     .container {
         min-height: 120vh;
         height: 100%;
+        background: rgba(0, 0, 0, .5);
     }
     .titulo h1 {
         font-size: 1.6rem;
@@ -259,6 +260,9 @@ select {
 }
 
 @media screen and (min-width:481px) and (max-width:768px) {
+    .container {
+        background: rgba(0, 0, 0, .5);
+    }
     .titulo h1 {
         font-size: 1.8rem;
     }

@@ -167,6 +167,7 @@ function IPV4() {
 }
 
 function rede() {
+
     remover = document.querySelectorAll('.remover');
     for (let i = 0; i < area_calc.length; i++) {
         if (remover.length > 1) {
@@ -190,5 +191,6 @@ function rede() {
     IntervaloFBIN.innerHTML += `<span class="remove binario" id="remover">` + sub[9] + `</span>`;
     ipv4Dec.innerHTML += `<span class="remover decimal" id="remover">` + sub[4] + `</span>`;
     ipv4B.innerHTML += `<span class="remover binario" id="remover">` + sub[5] + `</span>`;
+
 
 }
