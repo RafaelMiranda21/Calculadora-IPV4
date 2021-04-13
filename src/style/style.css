@@ -2,7 +2,7 @@
     height: 100vh;
     width: 100vw;
     position: relative;
-    background: rgba(0, 0, 0, .95);
+    background: rgba(0, 0, 0, .85);
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -182,7 +182,7 @@ select {
     .container {
         min-height: 120vh;
         height: 100%;
-        background: none;
+        background: rgba(0, 0, 0, .3);
     }
     .titulo h1 {
         font-size: 1.6rem;
@@ -261,7 +261,7 @@ select {
 
 @media screen and (min-width:481px) and (max-width:768px) {
     .container {
-        background: none;
+        background: rgba(0, 0, 0, .3);
     }
     .titulo h1 {
         font-size: 1.8rem;
