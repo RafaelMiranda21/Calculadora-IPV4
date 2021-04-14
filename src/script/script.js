@@ -13,8 +13,9 @@ let Sub_BroadDec = document.getElementById('Sub_BroadDec');
 let Sub_BroadBin = document.getElementById('Sub_BroadBin');
 let hosts_subredes = document.getElementById('hosts_subredes');
 let area_calc = document.querySelectorAll('.area-calc');
-document.querySelector('.bgd-video').playbackRate = .70;
+let sub = document.querySelectorAll('.sub');
 
+document.querySelector('.bgd-video').playbackRate = .70;
 
 function bin(dec) {
     return (dec >>> 0).toString(2);
@@ -34,6 +35,9 @@ function uns(valor, tamanho) {
     }
     return valor;
 }
+
+
+
 
 for (let i = 0; i < input.length; i++) { //muda o cursor quando atinge 3 caracteres
     input[i].addEventListener('input', function() {
@@ -89,10 +93,68 @@ function geraMascara() {
     if (mascara4.length < 8) {
         mascara4 = uns(mascara4, 8 - mascara4.length);
     }
+
+
+
     valueMascara = 32 - valueMascara;
     let mascarabin = mascara1 + "." + mascara2 + "." + mascara3 + "." + mascara4 + "/" + valueMascara;
     let mascaradec = parseInt(mascara1, 2) + "." + parseInt(mascara2, 2) + "." + parseInt(mascara3, 2) + "." + parseInt(mascara4, 2) + "/" + valueMascara;
-    return [mascarabin, mascaradec];
+    mascara1 = parseInt(mascara1);
+    andMascara1 = parseInt(input[0].value);
+    mascara2 = parseInt(mascara2);
+    andMascara2 = parseInt(input[1].value);
+    mascara3 = parseInt(mascara3);
+    andMascara3 = parseInt(input[2].value);
+    mascara4 = parseInt(mascara4);
+    andMascara4 = parseInt(input[3].value);
+    andMascara1 = mascara1 & andMascara1;
+    andMascara2 = mascara2 & andMascara2;
+    andMascara3 = mascara3 & andMascara3;
+    andMascara4 = mascara4 & andMascara4;
+    iprede = andMascara1 + "." + andMascara2 + "." + andMascara3 + "." + andMascara4;
+    return [mascarabin, mascaradec, iprede];
+}
+
+function geraRede(val, input) {
+    let resul = [];
+    resul[0] = val[0] & input[0].value;
+    resul[1] = val[1] & input[1].value;
+    resul[2] = val[2] & input[2].value;
+    resul[3] = val[3] & input[3].value;
+    return resul;
+}
+
+function geraBrod(val, input) {
+
+    let result = [];
+    let broad = [];
+    result[0] = ~val[0] & 0xFF;
+    result[1] = ~val[1] & 0xFF;
+    result[2] = ~val[2] & 0xFF;
+    result[3] = ~val[3] & 0xFF;
+
+    broad[0] = result[0] | input[0].value;
+    broad[1] = result[1] | input[1].value;
+    broad[2] = result[2] | input[2].value;
+    broad[3] = result[3] | input[3].value;
+    return broad;
+
+}
+
+function escondeSub() {
+    let val = Math.pow(2, mascara());
+    hidden = document.querySelectorAll(".hidden");
+    for (let i = 0; i < sub.length; i++) {
+        if (hidden.length > 1) {
+            console.log("entrei");
+            sub[i].classList = sub[i].className.replace('hidden', '');
+        }
+        if (val < sub[i].value) {
+            sub[i].classList.add('hidden');
+        }
+    }
+    sub[0].removeAttribute('selected', true);
+    sub[0].setAttribute('selected', true);
 }
 
 function convertBin(val) {
@@ -126,8 +188,6 @@ function convertBin(val) {
 
 
 function IPV4() {
-    let rede = [];
-    let broadcast = [];
     let intervaloI = [];
     let intervaloF = [];
     let mascaras = geraMascara();
@@ -135,41 +195,32 @@ function IPV4() {
     let mascara = mascaraDec.split(".");
     let mascaraT = mascara[3].split("/");
     mascara[3] = mascaraT[0];
+    let rede = geraRede(mascara, input);
+    let redeBin = convertBin(rede);
+    let broad = geraBrod(mascara, input);
+    let broadBin = convertBin(broad);
 
-    for (let i = 0; i < 4; i++) {
-        rede[i] = input[i].value;
-        mascara[i] = mascara[i].trim();
 
-        if (mascara[i] != 255) {
-            rede[i] = 0;
-        }
-        if (rede[i] == 0) {
-            broadcast[i] = 255;
-        } else {
-            broadcast[i] = rede[i];
-        }
-    }
     ipv4 = input[0].value + "." + input[1].value + "." + input[2].value + "." + input[3].value;
     ipv4 = ipv4.trim();
     ipv4Bin = convertBin(input);
-    redeBin = convertBin(rede);
-    broadBin = convertBin(broadcast);
     intervaloI = rede[0] + "." + rede[1] + "." + rede[2] + "." + (rede[3] + 1);
     primeiroBin = intervaloI.split(".");
     primeiroBin = convertBin(primeiroBin);
-    intervaloF = broadcast[0] + "." + broadcast[1] + "." + broadcast[2] + "." + (broadcast[3] - 1);
+    intervaloF = broad[0] + "." + broad[1] + "." + broad[2] + "." + (broad[3] - 1);
     ultimoBin = intervaloF.split(".");
     ultimoBin = convertBin(ultimoBin);
     rede = rede[0] + "." + rede[1] + "." + rede[2] + "." + rede[3];
-    broadcast = broadcast[0] + "." + broadcast[1] + "." + broadcast[2] + "." + broadcast[3];
-    return [rede, broadcast, intervaloI, intervaloF, ipv4, ipv4Bin, redeBin, broadBin, primeiroBin, ultimoBin];
+    broad = broad[0] + "." + broad[1] + "." + broad[2] + "." + broad[3];
+    console.log(redeBin, broadBin);
+    return [rede, broad, intervaloI, intervaloF, ipv4, ipv4Bin, redeBin, broadBin, primeiroBin, ultimoBin];
 
 }
 
 function rede() {
-
+    // escondeSub();
     remover = document.querySelectorAll('.remover');
-    for (let i = 0; i < area_calc.length; i++) {
+    for (let i = 0; i < (area_calc.length - 1); i++) {
         if (remover.length > 1) {
             // console.log(area_calc[i]);
             area_calc[i].removeChild(document.getElementById('remover'));

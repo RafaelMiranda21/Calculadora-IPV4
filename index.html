@@ -17,23 +17,24 @@
 
 <body>
     <div class="container">
-        <div class="titulo">
-            <h1>Calculadora de Rede</h1>
-        </div>
-        <div class="ipv4">
-            <div class="desc">
-                <h2>Endereço IPV4:</h2>
+        <div class="calculadora">
+            <div class="titulo">
+                <h1>Calculadora de Rede</h1>
             </div>
-            <div class="campos">
-                <input type="text" class="input" maxlength="3" placeholder="192">
-                <div class="dot"></div>
-                <input type="text" class="input" maxlength="3" placeholder="168">
-                <div class="dot"></div>
-                <input type="text" class="input" maxlength="3" placeholder="26">
-                <div class="dot"></div>
-                <input type="text" class="input" maxlength="3" placeholder="254">
-                <div class="barra"></div>
-                <select name="masc" id="input_masc" onchange="mascara()">
+            <div class="ipv4">
+                <div class="desc">
+                    <h2>Endereço IPV4:</h2>
+                </div>
+                <div class="campos">
+                    <input type="text" class="input" maxlength="3" placeholder="192">
+                    <div class="dot"></div>
+                    <input type="text" class="input" maxlength="3" placeholder="168">
+                    <div class="dot"></div>
+                    <input type="text" class="input" maxlength="3" placeholder="26">
+                    <div class="dot"></div>
+                    <input type="text" class="input" maxlength="3" placeholder="254">
+                    <div class="barra"></div>
+                    <select name="masc" id="input_masc" onchange="mascara()">
                                     <option value="8">8</option>
                                     <option value="9">9</option>
                                     <option value="10">10</option>
@@ -60,89 +61,121 @@
                                     <option value="31">31</option>
                                     <option value="32">32</option>
                                 </select>
-            </div>
-        </div>
-        <div class="calcular">
-            <input type="button" value="Calcular" onclick="rede()">
-        </div>
-        <div class="conteudo-calc">
-            <div class="calculo">
-                <div class="texto">
-                    <span>IPV4</span>
-                </div>
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="ipv4Dec"></div>
-                    <div class="area-calc campo_binario" id="ipv4B"></div>
-                </div>
-
-            </div>
-            <div class="calculo">
-                <div class="texto">
-                    <span>Máscara de sub-rede</span>
-                </div>
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="mascara_subRedeDec"></div>
-                    <div class="area-calc campo_binario" id="mascara_subRedeBin"></div>
                 </div>
             </div>
-            <div class="calculo">
-                <div class="texto">
-                    <span>Rede</span>
+            <div class="calcular">
+                <input type="button" value="Calcular" onclick="rede()">
+            </div>
+            <div class="conteudo-calc">
+                <div class="calculo">
+                    <div class="texto">
+                        <span>IPV4</span>
+                    </div>
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="ipv4Dec"></div>
+                        <div class="area-calc campo_binario" id="ipv4B"></div>
+                    </div>
+
+                </div>
+                <div class="calculo">
+                    <div class="texto">
+                        <span>Máscara de sub-rede</span>
+                    </div>
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="mascara_subRedeDec"></div>
+                        <div class="area-calc campo_binario" id="mascara_subRedeBin"></div>
+                    </div>
+                </div>
+                <div class="calculo">
+                    <div class="texto">
+                        <span>Rede</span>
+                    </div>
+
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="Sub_RedeDec"></div>
+                        <div class="area-calc campo_binario" id="Sub_RedeBin"></div>
+                    </div>
+                </div>
+                <div class="calculo">
+                    <div class="texto">
+                        <span>Broadcast</span>
+                    </div>
+
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="Sub_BroadDec"></div>
+                        <div class="area-calc campo_binario" id="Sub_BroadBin"></div>
+                    </div>
                 </div>
 
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="Sub_RedeDec"></div>
-                    <div class="area-calc campo_binario" id="Sub_RedeBin"></div>
+                <div class="calculo">
+                    <div class="texto">
+                        <span>1° Host</span>
+                    </div>
+
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="IntervaloI"></div>
+                        <div class="area-calc campo_binario" id="IntervaloIBIN"></div>
+                    </div>
+                </div>
+                <div class="calculo">
+                    <div class="texto">
+                        <span>Ultimo Host</span>
+                    </div>
+
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="IntervaloF"></div>
+                        <div class="area-calc campo_binario" id="IntervaloFBIN"></div>
+                    </div>
+                </div>
+
+                <div class="calculo">
+                    <div class="texto">
+                        <span>Número de hosts/sub-redes</span>
+                    </div>
+
+                    <div class="calc">
+                        <div class="area-calc campo_decimal" id="hosts_subredes"></div>
+                        <div class="area-calc campo_binario" id="subRedes">
+                            <select class="subRede" id="subRede" name="" id="">
+                                <option class="sub" value="1">1</option>
+                                <option class="sub" value="2">2</option>
+                                <option class="sub" value="4">4</option>
+                                <option class="sub" value="8">8</option>
+                                <option class="sub" value="16">16</option>
+                                <option class="sub" value="32">32</option>
+                                <option class="sub" value="64">64</option>
+                                <option class="sub" value="128">128</option>
+                                <option class="sub" value="256">256</option>
+                                <option class="sub" value="512">512</option>
+                                <option class="sub" value="1024">1024</option>
+                                <option class="sub" value="2048">2048</option>
+                                <option class="sub" value="4096">4096</option>
+                                <option class="sub" value="8192">8196</option>
+                                <option class="sub" value="16384">16384</option>
+                                <option class="sub" value="32768">32768</option>
+                                <option class="sub" value="65536">65536</option>
+                                <option class="sub" value="131072">131072</option>
+                                <option class="sub" value="262144">262144</option>
+                                <option class="sub" value="524288">524288</option>
+                                <option class="sub" value="1048576">1048576</option>
+                                <option class="sub" value="2097152">2097152</option>
+                                <option class="sub" value="4194304">4194304</option>
+                                <option class="sub" value="8388608">8388608</option>
+                                <option class="sub" value="16777216">16777216</option>
+                                
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="calculo">
-                <div class="texto">
-                    <span>Broadcast</span>
-                </div>
 
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="Sub_BroadDec"></div>
-                    <div class="area-calc campo_binario" id="Sub_BroadBin"></div>
-                </div>
-            </div>
-
-            <div class="calculo">
-                <div class="texto">
-                    <span>1° Host</span>
-                </div>
-
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="IntervaloI"></div>
-                    <div class="area-calc campo_binario" id="IntervaloIBIN"></div>
-                </div>
-            </div>
-            <div class="calculo">
-                <div class="texto">
-                    <span>Ultimo Host</span>
-                </div>
-
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="IntervaloF"></div>
-                    <div class="area-calc campo_binario" id="IntervaloFBIN"></div>
-                </div>
-            </div>
-
-            <div class="calculo">
-                <div class="texto">
-                    <span>Número de hosts/sub-redes</span>
-                </div>
-
-                <div class="calc">
-                    <div class="area-calc campo_decimal" id="hosts_subredes"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="background">
-            <video class="bgd-video" autoplay loop muted>
+            <div class="background">
+                <video class="bgd-video" autoplay loop muted>
                 <source src="https://media.istockphoto.com/videos/ethernet-cables-connected-to-modem-with-digital-binary-code-streaming-video-id1192277833" type="video/mp4">
             </video>
+            </div>
         </div>
+        <!-- <div class="resultado"></div> -->
     </div>
 </body>
 
