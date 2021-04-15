@@ -13,7 +13,7 @@ let Sub_BroadDec = document.getElementById('Sub_BroadDec');
 let Sub_BroadBin = document.getElementById('Sub_BroadBin');
 let hosts_subredes = document.getElementById('hosts_subredes');
 let area_calc = document.querySelectorAll('.area-calc');
-let sub = document.querySelectorAll('.sub');
+
 
 document.querySelector('.bgd-video').playbackRate = .70;
 
@@ -142,19 +142,14 @@ function geraBrod(val, input) {
 }
 
 function escondeSub() {
+    let sub = document.querySelectorAll('.sub');
     let val = Math.pow(2, mascara());
-    hidden = document.querySelectorAll(".hidden");
     for (let i = 0; i < sub.length; i++) {
-        if (hidden.length > 1) {
-            console.log("entrei");
-            sub[i].classList = sub[i].className.replace('hidden', '');
-        }
-        if (val < sub[i].value) {
+        sub[i].className = sub[i].className.replace(' hidden', '');
+        if (sub[i].value > val) {
             sub[i].classList.add('hidden');
         }
     }
-    sub[0].removeAttribute('selected', true);
-    sub[0].setAttribute('selected', true);
 }
 
 function convertBin(val) {
@@ -212,13 +207,12 @@ function IPV4() {
     ultimoBin = convertBin(ultimoBin);
     rede = rede[0] + "." + rede[1] + "." + rede[2] + "." + rede[3];
     broad = broad[0] + "." + broad[1] + "." + broad[2] + "." + broad[3];
-    console.log(redeBin, broadBin);
     return [rede, broad, intervaloI, intervaloF, ipv4, ipv4Bin, redeBin, broadBin, primeiroBin, ultimoBin];
 
 }
 
 function rede() {
-    // escondeSub();
+    escondeSub();
     remover = document.querySelectorAll('.remover');
     for (let i = 0; i < (area_calc.length - 1); i++) {
         if (remover.length > 1) {
