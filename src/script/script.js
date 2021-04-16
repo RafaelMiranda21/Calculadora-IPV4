@@ -234,18 +234,21 @@ function prep_sub() { //aqui eu pego o valor do input de sub-redes
              <div class="result_subs" id="class="result_subs">
                 <div class="result_rede result" id="result_rede "><h2>Sub-Rede</h2></div> 
                 <div class="result_rede result" id="result_rede "><h2>Rede</h2></div>
-                <div class="result_inter result" id="result_inter "><h2>Intervalo de Hosts</h2></div>
-                <div class="result_broad result" id="result_rede "><h2>Broadcast</h2></div>            
+                <div class="result_inter result" id="result_inter "><h2>Intervalo Inicial</h2></div>
+                <div class="result_broad result" id="result_rede "><h2>Intervalo Final</h2></div>  
+                <div class="result_broad result" id="result_rede "><h2>Broadcast</h2></div> 
+                         
              </div>
          `
     for (let i = 0; i < value; i++) {
         sub = IPV4(valueMascara);
         resultado.innerHTML += `
              <div class="result_subs" id="class="result_subs">
-                 <div class="result_rede result" id="result_rede ">` + i + `</div>
-                <div class="result_rede result" id="result_rede ">` + sub[0] + `</div>
-                <div class="result_inter result" id="result_inter ">` + sub[2] + " - " + sub[3] + `</div>
-                <div class="result_broad result" id="result_rede ">` + sub[1] + `</div>            
+                 <div class="result_rede result" id="result_rede "><span>` + i + `</span></div>
+                <div class="result_rede result" id="result_rede "><span class="resultDec">` + sub[0] + `/` + valueMascara + `</span> <span class="resultBin">` + sub[6] + `</span></div>
+                <div class="result_inter result" id="result_inter "><span class="resultDec">` + sub[2] + `/` + valueMascara + `</span> <span class="resultBin">` + sub[8] + `</span></div>
+                <div class="result_inter result" id="result_inter "><span class="resultDec">` + sub[3] + `/` + valueMascara + `</span> <span class="resultBin">` + sub[9] + `</span></div>
+                <div class="result_broad result" id="result_rede "><span class="resultDec">` + sub[1] + `/` + valueMascara + `</span> <span class="resultBin">` + sub[7] + `</span></div>        
              </div>
          `
         let broad = sub[1].split(".");
