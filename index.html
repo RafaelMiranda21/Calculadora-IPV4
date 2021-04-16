@@ -34,32 +34,32 @@
                     <div class="dot"></div>
                     <input type="text" class="input" maxlength="3" placeholder="254">
                     <div class="barra"></div>
-                    <select name="masc" id="input_masc" onchange="mascara()">
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                    <option value="32">32</option>
+                    <select name="masc" class="input_masc" id="input_masc">
+                                    <option  value="8">8</option>
+                                    <option class="sep_sub" value="9">9</option>
+                                    <option class="sep_sub" value="10">10</option>
+                                    <option class="sep_sub" value="11">11</option>
+                                    <option class="sep_sub" value="12">12</option>
+                                    <option class="sep_sub" value="13">13</option>
+                                    <option class="sep_sub" value="14">14</option>
+                                    <option class="sep_sub" value="15">15</option>
+                                    <option class="sep_sub" value="16">16</option>
+                                    <option class="sep_sub" value="17">17</option>
+                                    <option class="sep_sub"value="18">18</option>
+                                    <option class="sep_sub" value="19">19</option>
+                                    <option class="sep_sub" value="20">20</option>
+                                    <option class="sep_sub" value="21">21</option>
+                                    <option class="sep_sub" value="22">22</option>
+                                    <option class="sep_sub" value="23">23</option>
+                                    <option class="sep_sub" value="24">24</option>
+                                    <option class="sep_sub" value="25">25</option>
+                                    <option class="sep_sub" value="26">26</option>
+                                    <option class="sep_sub" value="27">27</option>
+                                    <option class="sep_sub" value="28">28</option>
+                                    <option class="sep_sub" value="29">29</option>
+                                    <option class="sep_sub" value="30">30</option>
+                                    <!-- <option value="31">31</option>
+                                    <option value="32">32</option> -->
                                 </select>
                 </div>
             </div>
@@ -136,33 +136,32 @@
                     <div class="calc">
                         <div class="area-calc campo_decimal" id="hosts_subredes"></div>
                         <div class="area-calc campo_binario" id="subRedes">
-                            <select class="subRede" id="subRede" name="" id="">
-                                <option class="sub" selected="true" value="1">1</option>
-                                <option class="sub" value="2">2</option>
-                                <option class="sub" value="4">4</option>
-                                <option class="sub" value="8">8</option>
-                                <option class="sub" value="16">16</option>
-                                <option class="sub" value="32">32</option>
-                                <option class="sub" value="64">64</option>
-                                <option class="sub" value="128">128</option>
-                                <option class="sub" value="256">256</option>
-                                <option class="sub" value="512">512</option>
-                                <option class="sub" value="1024">1024</option>
-                                <option class="sub" value="2048">2048</option>
-                                <option class="sub" value="4096">4096</option>
-                                <option class="sub" value="8192">8196</option>
-                                <option class="sub" value="16384">16384</option>
-                                <option class="sub" value="32768">32768</option>
-                                <option class="sub" value="65536">65536</option>
-                                <option class="sub" value="131072">131072</option>
-                                <option class="sub" value="262144">262144</option>
-                                <option class="sub" value="524288">524288</option>
-                                <option class="sub" value="1048576">1048576</option>
-                                <option class="sub" value="2097152">2097152</option>
-                                <option class="sub" value="4194304">4194304</option>
-                                <option class="sub" value="8388608">8388608</option>
-                                <option class="sub" value="16777216">16777216</option>
-                                
+                            <select class="subRede" id="subRede" onchange="prep_sub()">
+                                <option class="sub" id="sub" value="1">1</option>
+                                <option class="sub" id="sub" value="2">2</option>
+                                <option class="sub" id="sub" value="4">4</option>
+                                <option class="sub" id="sub" value="8">8</option>
+                                <option class="sub" id="sub" value="16">16</option>
+                                <option class="sub" id="sub" value="32">32</option>
+                                <option class="sub" id="sub" value="64">64</option>
+                                <option class="sub" id="sub" value="128">128</option>
+                                <option class="sub" id="sub" value="256">256</option>
+                                <option class="sub" id="sub" value="512">512</option>
+                                <option class="sub" id="sub" value="1024">1024</option>
+                                <option class="sub" id="sub" value="2048">2048</option>
+                                <option class="sub" id="sub" value="4096">4096</option>
+                                <option class="sub" id="sub" value="8192">8196</option>
+                                <option class="sub" id="sub" value="16384">16384</option>
+                                <option class="sub" id="sub" value="32768">32768</option>
+                                <option class="sub" id="sub" value="65536">65536</option>
+                                <option class="sub" id="sub" value="131072">131072</option>
+                                <option class="sub" id="sub" value="262144">262144</option>
+                                <option class="sub" id="sub" value="524288">524288</option>
+                                <option class="sub" id="sub" value="1048576">1048576</option>
+                                <option class="sub" id="sub" value="2097152">2097152</option>
+                                <option class="sub" id="sub" value="4194304">4194304</option>
+                                <option class="sub" id="sub" value="8388608">8388608</option>
+                                <option class="sub" id="sub" value="16777216">16777216</option>       
                             </select>
                         </div>
                     </div>
@@ -175,7 +174,8 @@
             </video>
             </div>
         </div>
-        <!-- <div class="resultado"></div> -->
+        <div class="resultado" id="resultado">
+        </div>
     </div>
 </body>
 

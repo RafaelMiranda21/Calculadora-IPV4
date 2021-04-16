@@ -13,6 +13,8 @@ let Sub_BroadDec = document.getElementById('Sub_BroadDec');
 let Sub_BroadBin = document.getElementById('Sub_BroadBin');
 let hosts_subredes = document.getElementById('hosts_subredes');
 let area_calc = document.querySelectorAll('.area-calc');
+
+
 document.querySelector('.bgd-video').playbackRate = .70;
 
 function bin(dec) {
@@ -46,20 +48,14 @@ for (let i = 0; i < input.length; i++) { //muda o cursor quando atinge 3 caracte
 }
 
 
-function mascara(props) {
+function mascara() {
     let masc = document.getElementById('input_masc');
-    let mascara;
-    if (props > 0) {
-        mascara = props;
-    } else {
-        mascara = masc.value;
-    }
-    console.log(mascara);
+    let mascara = masc.value;
     return 32 - mascara;
 }
 
-function geraMascara(props) {
-    let valueMascara = mascara(props);
+function geraMascara() {
+    let valueMascara = mascara();
     let mascara1 = "";
     let mascara2 = "";
     let mascara3 = "";
@@ -154,8 +150,8 @@ function escondeSub() {
             sub[i].classList.add('hidden');
         }
     }
-    // sub[0].removeAttribute('selected');
-    // sub[0].setAttribute('selected', 'true');
+    sub[0].removeAttribute('selected');
+    sub[0].setAttribute('selected', 'true');
 }
 
 function convertBin(val) {
@@ -188,10 +184,10 @@ function convertBin(val) {
 }
 
 
-function IPV4(props) {
+function IPV4() {
     let intervaloI = [];
     let intervaloF = [];
-    let mascaras = geraMascara(props);
+    let mascaras = geraMascara();
     let mascaraDec = mascaras[1];
     let mascara = mascaraDec.split(".");
     let mascaraT = mascara[3].split("/");
@@ -212,44 +208,8 @@ function IPV4(props) {
     ultimoBin = intervaloF.split(".");
     ultimoBin = convertBin(ultimoBin);
     rede = rede[0] + "." + rede[1] + "." + rede[2] + "." + rede[3];
-
     broad = broad[0] + "." + broad[1] + "." + broad[2] + "." + broad[3];
-    console.log(broad);
     return [rede, broad, intervaloI, intervaloF, ipv4, ipv4Bin, redeBin, broadBin, primeiroBin, ultimoBin];
-
-}
-
-function prep_sub() { //aqui eu pego o valor do input de sub-redes
-    var select = document.getElementById('subRede');
-    var value = select.options[select.selectedIndex].value;
-    resultado = document.getElementById('resultado');
-    let valueMascara = mascara(0);
-    valueMascara = 32 - valueMascara + Math.log2(value);
-    result_subs = document.querySelectorAll(".result_subs");
-
-    resultado.innerHTML = ``; //limpa a div de resultados
-
-
-
-    resultado.innerHTML += `
-             <div class="result_subs" id="class="result_subs">
-                <div class="result_rede result" id="result_rede "><h2>Rede</h2></div>
-                <div class="result_inter result" id="result_inter "><h2>Intervalo de Hosts</h2></div>
-                <div class="result_broad result" id="result_rede "><h2>Broadcast</h2></div>            
-             </div>
-         `
-    for (let i = 0; i < Math.log2(value) + 1; i++) {
-        sub = IPV4(valueMascara);
-        resultado.innerHTML += `
-             <div class="result_subs" id="class="result_subs">
-                <div class="result_rede result" id="result_rede ">` + sub[0] + `</div>
-                <div class="result_inter result" id="result_inter ">` + sub[2] + " - " + sub[3] + `</div>
-                <div class="result_broad result" id="result_rede ">` + sub[1] + `</div>            
-             </div>
-         `
-        let broad = sub[1].split(".");
-        input[3].value = parseInt(broad[3]) + 1;
-    }
 
 }
 
@@ -258,14 +218,16 @@ function rede() {
     remover = document.querySelectorAll('.remover');
     for (let i = 0; i < (area_calc.length - 1); i++) {
         if (remover.length > 1) {
+            // console.log(area_calc[i]);
             area_calc[i].removeChild(document.getElementById('remover'));
         }
     }
-    hosts_subredes.innerHTML += `<span class="remover decimal" id="remover">` + Math.pow(2, mascara(0)) + `</span>`;
-    mascaras = geraMascara(0);
+
+    hosts_subredes.innerHTML += `<span class="remover decimal" id="remover">` + Math.pow(2, mascara()) + `</span>`;
+    mascaras = geraMascara();
     mascara_subRedeBin.innerHTML += `<span class="remover binario" id="remover">` + mascaras[0] + `</span>`;
     mascara_subRedeDec.innerHTML += `<span class="remover decimal" id="remover">` + mascaras[1] + `</span>`;
-    sub = IPV4(0);
+    sub = IPV4();
     Sub_RedeDec.innerHTML += `<span class="remover decimal" id="remover">` + sub[0] + `</span>`;
     Sub_RedeBin.innerHTML += `<span class="remover binario" id="remover">` + sub[6] + `</span>`;
     Sub_BroadDec.innerHTML += `<span class="remover decimal" id="remover">` + sub[1] + `</span>`;
@@ -276,4 +238,6 @@ function rede() {
     IntervaloFBIN.innerHTML += `<span class="remove binario" id="remover">` + sub[9] + `</span>`;
     ipv4Dec.innerHTML += `<span class="remover decimal" id="remover">` + sub[4] + `</span>`;
     ipv4B.innerHTML += `<span class="remover binario" id="remover">` + sub[5] + `</span>`;
+
+
 }

@@ -5,11 +5,6 @@
     overflow: hidden;
 }
 
-.resultado {
-    height: 100vh;
-    width: 100vw;
-}
-
 .calculadora {
     height: 100vh;
     width: 100vw;
@@ -203,8 +198,21 @@ select {
     font-size: 1rem;
 }
 
-.hidden {
-    display: none;
+.resultado {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.result_subs {
+    display: flex;
+    width: 80%;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px solid #fff;
 }
 
 @media screen and (min-width:320px) and (max-width:480px) {
