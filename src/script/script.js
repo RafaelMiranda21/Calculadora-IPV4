@@ -4,7 +4,7 @@ let ipv4B = document.getElementById('ipv4B');
 let mascara_subRedeBin = document.getElementById('mascara_subRedeBin');
 let mascara_subRedeDec = document.getElementById('mascara_subRedeDec');
 let IntervaloI = document.getElementById('IntervaloI');
-let IntervaloIBIN = document.getElementById('IntervaloIBIN');
+let IntervaloIBIN = document.getElementById('IntervaloIBIN'); //pegando os elementos
 let IntervaloF = document.getElementById('IntervaloF');
 let IntervaloFBIN = document.getElementById('IntervaloFBIN');
 let Sub_RedeDec = document.getElementById('Sub_RedeDec');
@@ -19,19 +19,19 @@ document.querySelector('.bgd-video').playbackRate = .70;
 
 
 function bin(dec) {
-    return (dec >>> 0).toString(2);
+    return (dec >>> 0).toString(2); //transforma decimal em binario
 
 }
 
 function zeros(valor, tamanho) {
-    for (let i = 0; i < tamanho; i++) {
+    for (let i = 0; i < tamanho; i++) { //adiciona zeros a esquerda para completar o octeto
         valor = "0" + valor;
     }
     return valor;
 }
 
 function uns(valor, tamanho) {
-    for (let i = 0; i < tamanho; i++) {
+    for (let i = 0; i < tamanho; i++) { //adiciona uns a esquerda para completar o octeto
         valor = "1" + valor;
     }
     return valor;
@@ -49,7 +49,7 @@ for (let i = 0; i < input.length; i++) { //muda o cursor quando atinge 3 caracte
 }
 
 
-function mascara(props) {
+function mascara(props) { //retorna o tanto de host
     let masc = document.getElementById('input_masc');
     let mascara;
     if (props > 0) {
@@ -60,7 +60,7 @@ function mascara(props) {
     return 32 - mascara;
 }
 
-function geraMascara(props) {
+function geraMascara(props) { //gera a mascara da rede
     let valueMascara = mascara(props);
     let mascara1 = "";
     let mascara2 = "";
@@ -121,7 +121,7 @@ function geraMascara(props) {
     return [mascarabin, mascaradec, iprede];
 }
 
-function geraRede(val, input) {
+function geraRede(val, input) { //gera a rede primeiro Ip
     let resul = [];
     resul[0] = val[0] & input[0].value;
     resul[1] = val[1] & input[1].value;
@@ -130,7 +130,7 @@ function geraRede(val, input) {
     return resul;
 }
 
-function geraBrod(val, input) {
+function geraBrod(val, input) { //gera o broadcast ultimo Ip
 
     let result = [];
     let broad = [];
@@ -147,20 +147,18 @@ function geraBrod(val, input) {
 
 }
 
-function escondeSub() {
+function escondeSub() { //aqui faz aparecer somente o tanto de sub-redes que pode ser calculados
     let sub = document.querySelectorAll('.sub');
-    let val = Math.pow(2, mascara());
+    let val = Math.pow(2, mascara(0));
     for (let i = 0; i < sub.length; i++) {
         sub[i].className = sub[i].className.replace(' hidden', '');
         if (sub[i].value > val) {
             sub[i].classList.add('hidden');
         }
     }
-    // sub[0].removeAttribute('selected');
-    // sub[0].setAttribute('selected', 'true');
 }
 
-function convertBin(val) {
+function convertBin(val) { //gera o ip em binario
     if (val == input) {
         result = val[0].value + "." + val[1].value + "." + val[2].value + "." + val[3].value;
         result = result.trim();
@@ -190,7 +188,7 @@ function convertBin(val) {
 }
 
 
-function IPV4(props) {
+function IPV4(props) { //monta os ips 
     let intervaloI = [];
     let intervaloF = [];
     let mascaras = geraMascara(props);
@@ -253,12 +251,13 @@ function prep_sub() { //aqui eu pego o valor do input de sub-redes
         let broad = sub[1].split(".");
         input[3].value = parseInt(broad[3]) + 1;
     }
-
+    window.location.href = "#resultado";
 }
 
-function rede() {
+function rede() { //faz mostrar na tela os resultados gerados
     escondeSub();
     remover = document.querySelectorAll('.remover');
+    console.log(remover);
     for (let i = 0; i < (area_calc.length - 1); i++) {
         if (remover.length > 1) {
             area_calc[i].removeChild(document.getElementById('remover'));
