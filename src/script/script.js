@@ -13,7 +13,10 @@ let Sub_BroadDec = document.getElementById('Sub_BroadDec');
 let Sub_BroadBin = document.getElementById('Sub_BroadBin');
 let hosts_subredes = document.getElementById('hosts_subredes');
 let area_calc = document.querySelectorAll('.area-calc');
+let armazenar;
 document.querySelector('.bgd-video').playbackRate = .70;
+
+
 
 function bin(dec) {
     return (dec >>> 0).toString(2);
@@ -54,7 +57,6 @@ function mascara(props) {
     } else {
         mascara = masc.value;
     }
-    console.log(mascara);
     return 32 - mascara;
 }
 
@@ -214,34 +216,35 @@ function IPV4(props) {
     rede = rede[0] + "." + rede[1] + "." + rede[2] + "." + rede[3];
 
     broad = broad[0] + "." + broad[1] + "." + broad[2] + "." + broad[3];
-    console.log(broad);
     return [rede, broad, intervaloI, intervaloF, ipv4, ipv4Bin, redeBin, broadBin, primeiroBin, ultimoBin];
 
 }
 
 function prep_sub() { //aqui eu pego o valor do input de sub-redes
+
+    input[3].value = armazenar; //garante que o 3 campo seja o mesmo sempre
     var select = document.getElementById('subRede');
     var value = select.options[select.selectedIndex].value;
     resultado = document.getElementById('resultado');
     let valueMascara = mascara(0);
     valueMascara = 32 - valueMascara + Math.log2(value);
     result_subs = document.querySelectorAll(".result_subs");
-
     resultado.innerHTML = ``; //limpa a div de resultados
 
-
-
-    resultado.innerHTML += `
+    //coloca os titulos
+    resultado.innerHTML += ` 
              <div class="result_subs" id="class="result_subs">
+                <div class="result_rede result" id="result_rede "><h2>Sub-Rede</h2></div> 
                 <div class="result_rede result" id="result_rede "><h2>Rede</h2></div>
                 <div class="result_inter result" id="result_inter "><h2>Intervalo de Hosts</h2></div>
                 <div class="result_broad result" id="result_rede "><h2>Broadcast</h2></div>            
              </div>
          `
-    for (let i = 0; i < Math.log2(value) + 1; i++) {
+    for (let i = 0; i < value; i++) {
         sub = IPV4(valueMascara);
         resultado.innerHTML += `
              <div class="result_subs" id="class="result_subs">
+                 <div class="result_rede result" id="result_rede ">` + i + `</div>
                 <div class="result_rede result" id="result_rede ">` + sub[0] + `</div>
                 <div class="result_inter result" id="result_inter ">` + sub[2] + " - " + sub[3] + `</div>
                 <div class="result_broad result" id="result_rede ">` + sub[1] + `</div>            
@@ -276,4 +279,5 @@ function rede() {
     IntervaloFBIN.innerHTML += `<span class="remove binario" id="remover">` + sub[9] + `</span>`;
     ipv4Dec.innerHTML += `<span class="remover decimal" id="remover">` + sub[4] + `</span>`;
     ipv4B.innerHTML += `<span class="remover binario" id="remover">` + sub[5] + `</span>`;
+    armazenar = input[3].value; // armazena o 4 campo do ip
 }
